@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import "@testing-library/jest-dom";
@@ -6,7 +6,7 @@ import TodoList from '../../src/pages/TodoList'
 
 import { addTodoWithPriority } from "./test.helpers";
 
-describe("TodoList Component", () => {
+describe("TodoList Page", () => {
   // beforeEach 會在每個測試案例執行前執行
   beforeEach(() => {
     // 渲染元件
