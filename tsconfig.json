@@ -9,6 +9,6 @@
       "@/*": ["./src/*"]
     },
     "types": ["vitest/globals", "node"],
-    "jsx": "react-jsx"
-  }
+    "jsx": "react-jsx",
+  },
 }

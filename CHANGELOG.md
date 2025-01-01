@@ -1,3 +1,9 @@
+## 0.1.2 ( 2025-01-02 )
+
+### feat 
+
+- Add Navbar Component Testing
+
 ## 0.1.1 ( 2025-01-01 )
 
 ### feat
