@@ -1,34 +1,32 @@
 import React from "react";
+import { vi } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
-// import dayjs from "dayjs";
 import Activity from "../../src/pages/Activity";
-import { vi } from "vitest";
 
 describe("Double Eleven Activity", () => {
-  beforeEach(() =>{
-    render(<Activity />);
-  })
+  beforeEach(() => {
+    // 使用假時間
+    vi.useFakeTimers();
+  });
 
   afterEach(() => {
     cleanup();
-  });
-
-  test("Not Double Eleven", () => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date("11-11"));
-    
-    expect(screen.queryByText("Double Eleven Activity")).toBeNull();
-
+    // 使用真實時間
     vi.useRealTimers();
   });
 
-  // test("Show Double Eleven Text", () => {
-  //   vi.useFakeTimers();
-  //   vi.setSystemTime(new Date("2025-11-11T00:00:00Z"));
+  test("Not Double Eleven Text", () => {
+    // 設定系統模擬時間，因需要先模擬時間才能渲染元件
+    vi.setSystemTime(new Date(`${new Date().getFullYear()}-01-01`));
+    render(<Activity />);
+    expect(screen.queryByText("Double Eleven Activity")).toBeNull();
+    // expect(screen.queryByText("Double Eleven Activity")).not.toBeInTheDocument();
+  });
 
-  //   expect(screen.getByText("Double Eleven Activity")).toBeInTheDocument();
-
-  //   vi.useRealTimers();
-  // });
+  test("Show Double Eleven Text", () => {
+    vi.setSystemTime(new Date(`${new Date().getFullYear()}-11-11`));
+    render(<Activity />);
+    expect(screen.getByText("Double Eleven Activity")).toBeInTheDocument();
+  });
 });

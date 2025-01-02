@@ -7,7 +7,7 @@ import Navbar from "../../src/components/Navbar";
 describe("Navbar Component", () => {
   const renderWithRouter = (props = "/") => {
     return render(
-      <MemoryRouter initialEntries={[...props]}>
+      <MemoryRouter initialEntries={[props]}>
         <Navbar />
       </MemoryRouter>,
     );
@@ -24,17 +24,22 @@ describe("Navbar Component", () => {
     expect(screen.getByText("Activity")).toBeInTheDocument();
   });
 
-  test("Route have active class", () => {
+  test("Route home have active class", () => {
     renderWithRouter();
     expect(screen.getByText("Home")).toHaveClass("active");
   });
 
-  test("Route not have active class", () => {
+  test("Route home not have active class", () => {
     renderWithRouter("/todolist");
-    expect(screen.getByText("TodoList")).not.toHaveClass("active");
+    expect(screen.getByText("Home")).not.toHaveClass("active");
   });
 
-  test("Route Change", async () => {
+  test("Route have active class", () => {
+    renderWithRouter("/todolist");
+    expect(screen.getByText("TodoList")).toHaveClass("active");
+  });
+
+  test("User change to TodoList", async () => {
     const user = userEvent.setup();
     renderWithRouter();
     expect(screen.getByText("Home")).toHaveClass("active");
