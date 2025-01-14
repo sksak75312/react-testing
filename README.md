@@ -1,7 +1,7 @@
 # Learn Testing
 ## React、Vitest、Testing-Library-React
 
-|  特點  |  fireEvent  |	userEvent |
+|特點|fireEvent|userEvent|
 |----|---|----|
 | 模擬行為 |單純觸發事件|	模擬真實使用者行為|
 |細節支持|無，僅觸發事件本身|	支援焦點管理、逐字符輸入等上下文行為|
@@ -17,3 +17,23 @@
 2. 使用 userEvent
     - 模擬真實使用者的交互行為。
     - 測試多步驟、複雜的交互，例如輸入文字、選擇下拉選單等。
+
+---
+
+### test 相關指令
+|Command|Description|
+|----|----|
+|test.only()|只執行此測試|
+|test.skip()|跳過此測試|
+
+### expect 相關指令
+
+|Command|Description|
+|----|------|
+|.toBe()|使用 Object.is() 進行比對，檢查兩個值是否相同|
+|.not.toBe()|搭配.not使用，則會檢查值是否**不**相同|
+|.toEqual|檢查 object content 是否相同|
+|.toBeCloseTo()| 比對浮點數 |
+|.toBeTruthy()|比對 Truthy 值|
+|.toBeFalsy()| 比對 Falsy 值|
+|.toBeUndefined()|比對是否未定義|

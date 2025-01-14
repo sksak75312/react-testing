@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import TodoList from '../../src/pages/TodoList'
+import TodoList from "../../src/pages/TodoList";
 
 import { addTodoWithPriority } from "./test.helpers";
 
-describe("TodoList Component", () => {
+describe("TodoList Page", () => {
   // beforeEach 會在每個測試案例執行前執行
   beforeEach(() => {
     // 渲染元件
@@ -91,8 +91,6 @@ describe("TodoList Component", () => {
   //   expect(await screen.findByText(todoValue)).toBeInTheDocument();
   // });
 
-
-  
   /**
    * ! ChatGPT 推薦優化方向
    */
@@ -105,7 +103,7 @@ describe("TodoList Component", () => {
   /**
    *  * test.each 是 Jest 提供的參數化測試工具，類 forEach
    *  * https://vitest.dev/api/#test-each
-   */ 
+   */
   test.each(priorities)(
     `Add a new todo with $label priority`,
     async ({ value, label, group }) => {
