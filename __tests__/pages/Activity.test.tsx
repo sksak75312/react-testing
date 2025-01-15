@@ -17,7 +17,11 @@ describe("Double Eleven Activity", () => {
   });
 
   test("Not Double Eleven Text", () => {
-    // 設定系統模擬時間，因需要先模擬時間才能渲染元件
+    /**
+     * * 設定系統模擬時間
+     * * 需要先模擬時間才能渲染元件
+     * * 否則元件會取得當前的時間
+     */
     vi.setSystemTime(new Date(`${new Date().getFullYear()}-01-01`));
     render(<Activity />);
     expect(screen.queryByText("Double Eleven Activity")).toBeNull();
